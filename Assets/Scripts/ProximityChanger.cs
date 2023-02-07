@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public abstract class ProximityChanger : MonoBehaviour
 {
-    protected double _rate;
     protected float _currentValue;
     protected Vector3 _currentDistance;
+    protected ExponentialScaler _exponentialScaler;
 
     [SerializeField] protected float valueAtMaxDistance;
     [SerializeField] protected float valueAtMinDistance;
@@ -17,8 +17,7 @@ public abstract class ProximityChanger : MonoBehaviour
 
     protected void Start()
     {
-        // Calculate the rate to use in formulas later
-        _rate = VectorDecay.CalculateRate(valueAtMinDistance, valueAtMaxDistance, maxDistance - minDistance);
+        _exponentialScaler = new ExponentialScaler(minDistance, maxDistance, valueAtMinDistance, valueAtMaxDistance);
     }
 
 
@@ -26,20 +25,6 @@ public abstract class ProximityChanger : MonoBehaviour
     {
         _currentDistance = referenceObject.transform.position - gameObject.transform.position;
 
-        if (_currentDistance.magnitude > maxDistance)
-        {
-            _currentValue = valueAtMaxDistance;
-        }
-        else if (_currentDistance.magnitude < minDistance)
-            _currentValue = valueAtMinDistance;
-        else
-            _currentValue = CalculateExponent();
-    }
-
-    private float CalculateExponent()
-    {
-
-        return VectorDecay.CalculateDecay(valueAtMinDistance, _rate, _currentDistance.magnitude - minDistance);
-
+        _currentValue = _exponentialScaler.CalculateOutputValue(_currentDistance.magnitude);
     }
 }

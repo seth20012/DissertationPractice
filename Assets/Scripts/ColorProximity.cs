@@ -17,7 +17,7 @@ public class ColorProximity : ProximityChanger
     private void Update()
     {
         base.Update();
-
+        Debug.Log("Distance : " + _currentDistance.magnitude + " Value : " + _currentValue);
         _color.a = _currentValue;
         gameObject.GetComponent<MeshRenderer>().material.color = _color;
     }
