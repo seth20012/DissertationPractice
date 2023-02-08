@@ -1,3 +1,6 @@
+/// <summary>
+/// A class representing an instance of the exponential function P=P1*e^(-kt) between two values
+/// </summary>
 public class ExponentialScaler
 {
     public float ValueAtMaxInput { get; private set; }
@@ -13,11 +16,12 @@ public class ExponentialScaler
         MinInput = minInput;
         MaxInput = maxInput;
 
-        Rate = VectorDecay.CalculateRate(valueAtMinInput, valueAtMaxInput, MaxInput - MinInput);
+        Rate = ExponentialUtils.CalculateExponentialRate(valueAtMinInput, valueAtMaxInput, MaxInput - MinInput);
     }
 
     public float CalculateOutputValue(float input)
     {
+        // Don't all the output values to go beyond the extremes
         if (input > MaxInput)
         {
             return ValueAtMaxInput;
@@ -28,7 +32,7 @@ public class ExponentialScaler
         }
         else
         {
-            return VectorDecay.CalculateDecay(ValueAtMinInput, Rate, input - MinInput);
+            return ExponentialUtils.CalculateValueAtDelta(ValueAtMinInput, Rate, input - MinInput);
         }
     }
 }
