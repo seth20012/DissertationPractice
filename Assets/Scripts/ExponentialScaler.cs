@@ -1,7 +1,7 @@
 /// <summary>
 /// A class representing an instance of the exponential function P=P1*e^(-kt) between two values
 /// </summary>
-public class ExponentialScaler
+public class ExponentialScaler: IScale
 {
     public float ValueAtMaxInput { get; private set; }
     public float ValueAtMinInput { get; private set; }
@@ -21,7 +21,7 @@ public class ExponentialScaler
 
     public float CalculateOutputValue(float input)
     {
-        // Don't all the output values to go beyond the extremes
+        // Don't allow the output values to go beyond the extremes
         if (input > MaxInput)
         {
             return ValueAtMaxInput;
