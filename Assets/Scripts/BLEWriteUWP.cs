@@ -30,6 +30,10 @@ public class BLEWriteUWP : MonoBehaviour, ITakeFloatInput
 
     public UnityEvent<float> OnInputChanged { get; } = new UnityEvent<float>();
 
+    [SerializeField] private string bluetoothAddress;
+    [SerializeField] private string serviceUUID;
+    [SerializeField] private string characteristicUUID;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,13 +78,13 @@ public class BLEWriteUWP : MonoBehaviour, ITakeFloatInput
 
     private async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation args)
     {
-        if ((string)args.Properties["System.Devices.Aep.DeviceAddress"] == "c1:49:79:f1:60:d0")
+        if ((string)args.Properties["System.Devices.Aep.DeviceAddress"] == bluetoothAddress)
         {
             deviceWatcher.Stop();
             bluetoothLEDevice = await BluetoothLEDevice.FromIdAsync(args.Id);
-            var serviceResponse = await bluetoothLEDevice.GetGattServicesForUuidAsync(new Guid("080dee88-6d08-4bf2-988e-171ea83552ba"));
+            var serviceResponse = await bluetoothLEDevice.GetGattServicesForUuidAsync(new Guid(serviceUUID));
             selectedService = serviceResponse.Services[0];
-            var characteristicResponse = await selectedService.GetCharacteristicsForUuidAsync(new Guid("080dee98-6d08-4bf2-988e-171ea83552ba"));
+            var characteristicResponse = await selectedService.GetCharacteristicsForUuidAsync(new Guid(characteristicUUID));
             selectedCharacteristic = characteristicResponse.Characteristics[0];
         }
     }
