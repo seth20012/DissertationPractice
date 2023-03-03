@@ -5,20 +5,19 @@ using UnityEngine;
 
 public class StepSequence : IEnumerable<Step>
 {
-    public IList<Step> Steps { get; private set; }
-
     private HashSet<string> UniqueItemsSet = new HashSet<string>();
-    public List<string> UniqueItems
-    {
-        // Return in alphabetical order
-        get => UniqueItemsSet.OrderBy(s => s).ToList();
-    }
+    private readonly IList<Step> _steps;
+    
+    /// <summary>
+    /// An alphabetical list of unique items present within the steps
+    /// </summary>
+    public List<string> UniqueItems => UniqueItemsSet.OrderBy(s => s).ToList();
 
     public StepSequence(IEnumerable<Step> steps)
     {
-        Steps = (IList<Step>)steps;
+        _steps = (IList<Step>)steps;
 
-        foreach (Step step in Steps)
+        foreach (Step step in _steps)
         {
             UniqueItemsSet.Add(step.From);
             UniqueItemsSet.Add(step.To);
@@ -27,10 +26,7 @@ public class StepSequence : IEnumerable<Step>
 
     public IEnumerator<Step> GetEnumerator()
     {
-        foreach (Step step in Steps)
-        {
-            yield return step;
-        }
+        return _steps.GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
