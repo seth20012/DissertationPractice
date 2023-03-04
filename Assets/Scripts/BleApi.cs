@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using UnityEngine;
+﻿using System.Runtime.InteropServices;
 
 public class BleApi
 {
