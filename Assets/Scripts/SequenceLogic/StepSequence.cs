@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace SequenceLogic
 {
@@ -21,7 +22,23 @@ namespace SequenceLogic
 
         public virtual IEnumerator<Step<T>> GetEnumerator()
         {
-            return Steps.GetEnumerator();
+            foreach(Step<T> step in Steps)
+            {
+                switch (step.Status)
+                {
+                    case StepStatus.AtStart:
+                        step.OnEntry?.Invoke();
+                        yield return step;
+                        break;
+                    case StepStatus.InProcess:
+                        step.Operation?.Invoke();
+                        yield return step;
+                        break;
+                    default:
+                        step.OnExit?.Invoke();
+                        continue;
+                }
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()

@@ -1,3 +1,5 @@
+using UnityEngine.Events;
+
 namespace SequenceLogic
 {
     public enum StepStatus
@@ -24,10 +26,19 @@ namespace SequenceLogic
         /// </summary>
         public StepStatus Status { get; set; }
 
+        public UnityEvent OnEntry = new UnityEvent();
+
+        public UnityEvent Operation = new UnityEvent();
+
+        public UnityEvent OnExit = new UnityEvent();
+        
         public Step(T from, T to)
         {
             From = from;
             To = to;
+            
+            OnEntry.AddListener(() => Status = StepStatus.InProcess); // Move to operational status after start
+            Operation.AddListener(() => Status = StepStatus.AtEnd); // Move to end status after operation
         }
     }
 }

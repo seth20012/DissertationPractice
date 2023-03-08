@@ -4,83 +4,53 @@ using UnityEngine;
 
 namespace SequenceLogic
 {
-    public class MRTKInteractableStepSequence : StepSequence<MRTKBaseInteractable>
+    public class MRTKInteractableStepSequence : StepSequenceWithDefaultBehaviours<MRTKBaseInteractable>
     {
-        /// <summary>
-        /// StepOperation delegate. Performs an action during a PositioningStep
-        /// </summary>
-        public delegate void StepOperation(Step<MRTKBaseInteractable> mrtkInteractablePositioningStep);
-    
-        /// <summary>
-        /// The StepOperation method run to initialise a step
-        /// </summary>
-        public StepOperation Begin { get; set; }
-        
-        /// <summary>
-        /// The StepOperation method run when the user begins a step
-        /// </summary>
-        public StepOperation Operation { get; set; }
-        
-        /// <summary>
-        /// The StepOperation method run when the user completes a step
-        /// </summary>
-        public StepOperation End { get; set; }
-    
         public MRTKInteractableStepSequence(IList<Step<MRTKBaseInteractable>> steps) : base(steps)
         {
-            Begin += BeginDefault;
-            Operation += DoOperationDefault;
+            OnAllBegin?.AddListener(MRTKBeginDefault);
+            OnAllOperation?.AddListener(MRTKOperationDefault);
+            OnAllEnd?.AddListener(MRTKEndDefault);
         }
 
         /// <summary>
-        /// GOPositioningStepSequence Constructor
+        /// Continues the running of the sequence
         /// </summary>
-        /// <param name="items">An ordered list of GameObjects to be used as step sequence To/From items</param>
-        /// <param name="stringStepSequence">The StepSequence to follow</param>
-        public MRTKInteractableStepSequence(IList<MRTKBaseInteractable> items, StringStepSequence stringStepSequence)
-            : base(StepUtils.StepSequenceConvert(stringStepSequence.uniqueItems, items, stringStepSequence))
+        public void ContinueSteps()
         {
-            // Add default functionality to delegate methods
-            Begin += BeginDefault;
-            Operation += DoOperationDefault;
+            GetEnumerator().MoveNext();
         }
-
-        /// <summary>
-        /// Iterate through a step sequence running any associated functionality
-        /// </summary>
-        /// <returns>The step being operated on</returns>
-        public override IEnumerator<Step<MRTKBaseInteractable>> GetEnumerator()
+        
+        private void SetInteractable(MRTKBaseInteractable interactable, bool value)
         {
-            foreach(Step<MRTKBaseInteractable> step in Steps)
+            if (value)
             {
-                switch (step.Status)
-                {
-                    case StepStatus.AtStart:
-                        Begin(step);
-                        Debug.Log("Begin!");
-                        yield return step;
-                        break;
-                    case StepStatus.InProcess:
-                        Operation(step);
-                        Debug.Log("Operate!");
-                        yield return step;
-                        break;
-                    default:
-                        End(step);
-                        Debug.Log("End!");
-                        continue;
-                }
+                interactable.gameObject.ChangeOpacity(1f);
+                interactable.IsPokeSelected.OnEntered.AddListener((k) => ContinueSteps());
+            }
+            else
+            {
+                interactable.gameObject.ChangeOpacity(0f);
+                interactable.IsPokeSelected.OnEntered.RemoveAllListeners();
             }
         }
 
-        private void BeginDefault(Step<MRTKBaseInteractable> mrtkInteractablePositioningStep)
+        private void MRTKBeginDefault(Step<MRTKBaseInteractable> step)
         {
-            mrtkInteractablePositioningStep.Status = StepStatus.InProcess;
+            SetInteractable(step.From, true);
+            SetInteractable(step.To, false);
         }
 
-        private void DoOperationDefault(Step<MRTKBaseInteractable> mrtkInteractablePositioningStep)
+        private void MRTKOperationDefault(Step<MRTKBaseInteractable> step)
         {
-            mrtkInteractablePositioningStep.Status = StepStatus.AtEnd;
+            SetInteractable(step.To, true);
+            SetInteractable(step.From, false);
+        }
+
+        private void MRTKEndDefault(Step<MRTKBaseInteractable> step)
+        {
+            SetInteractable(step.To, false);
+            SetInteractable(step.From, false);
         }
     }
 }

@@ -22,57 +22,12 @@ namespace SequenceLogic
                 go.ChangeOpacity(0f); // Hide
             }
 
-            _positioningSteps = new MRTKInteractableStepSequence(interactables, stepReader.stringStepSequence);
-        
-            // Add visualisation to the delegate methods
-            _positioningSteps.Begin += OnStart;
-            _positioningSteps.Operation += OnTransition;
-            _positioningSteps.End += OnEnd;
+            var mrtkInteractablesSequence = StepUtils.StepSequenceConvert(
+                stepReader.stringStepSequence.uniqueItems, interactables, stepReader.stringStepSequence);
+            _positioningSteps = new MRTKInteractableStepSequence(mrtkInteractablesSequence);
 
             // Begin the sequence
-            ContinueSteps();
-
-
-        }
-
-        private void OnStart(Step<MRTKBaseInteractable> mrtkInteractablePositioningStep)
-        {
-            SetInteractable(mrtkInteractablePositioningStep.From, true);
-            SetInteractable(mrtkInteractablePositioningStep.To, false);
-        }
-
-        private void OnTransition(Step<MRTKBaseInteractable> mrtkInteractablePositioningStep)
-        {
-            SetInteractable(mrtkInteractablePositioningStep.To, true);
-            SetInteractable(mrtkInteractablePositioningStep.From, false);
-        }
-
-        private void OnEnd(Step<MRTKBaseInteractable> mrtkInteractablePositioningStep)
-        {
-            SetInteractable(mrtkInteractablePositioningStep.To, false);
-            SetInteractable(mrtkInteractablePositioningStep.From, false);
-        }
-
-        private void SetInteractable(MRTKBaseInteractable interactable, bool value)
-        {
-            if (value)
-            {
-                interactable.gameObject.ChangeOpacity(1f);
-                interactable.IsPokeSelected.OnEntered.AddListener((k) => ContinueSteps());
-            }
-            else
-            {
-                interactable.gameObject.ChangeOpacity(0f);
-                interactable.IsPokeSelected.OnEntered.RemoveAllListeners();
-            }
-        }
-
-        /// <summary>
-        /// Continues the running of the sequence
-        /// </summary>
-        public void ContinueSteps()
-        {
-            _positioningSteps.GetEnumerator().MoveNext();
+            _positioningSteps.ContinueSteps();
         }
     }
 }
