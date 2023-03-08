@@ -5,9 +5,9 @@ namespace SequenceLogic
 {
     public class StepSequenceWithDefaultBehaviours<T> : StepSequence<T>
     {
-        protected readonly UnityEvent<Step<T>> OnAllBegin = new UnityEvent<Step<T>>();
-        protected readonly UnityEvent<Step<T>> OnAllOperation = new UnityEvent<Step<T>>();
-        protected readonly UnityEvent<Step<T>> OnAllEnd = new UnityEvent<Step<T>>();
+        public readonly UnityEvent<Step<T>> OnAllBegin = new UnityEvent<Step<T>>();
+        public readonly UnityEvent<Step<T>> OnAllOperation = new UnityEvent<Step<T>>();
+        public readonly UnityEvent<Step<T>> OnAllEnd = new UnityEvent<Step<T>>();
         
         protected StepSequenceWithDefaultBehaviours(IList<Step<T>> steps) : base(steps)
         {

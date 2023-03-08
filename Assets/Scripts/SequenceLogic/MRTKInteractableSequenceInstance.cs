@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Microsoft.MixedReality.Toolkit;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace SequenceLogic
 {
@@ -14,12 +16,10 @@ namespace SequenceLogic
         // Start is called before the first frame update
         private void Start()
         {
-            var gos = new List<GameObject>();
             foreach (var interactable in interactables)
             {
                 var go = interactable.gameObject;
-                gos.Add(go);
-                go.ChangeOpacity(0f); // Hide
+                go.SetActive(false);
             }
 
             var mrtkInteractablesSequence = StepUtils.StepSequenceConvert(
@@ -27,6 +27,11 @@ namespace SequenceLogic
             _positioningSteps = new MRTKInteractableStepSequence(mrtkInteractablesSequence);
 
             // Begin the sequence
+            _positioningSteps.ContinueSteps();
+        }
+
+        public void ContinueSteps()
+        {
             _positioningSteps.ContinueSteps();
         }
     }
