@@ -1,10 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class ModalitiesEnabled
+public class ModalitiesEnabled : MonoBehaviour
 {
-    public static bool VisualsEnabled = true;
-    public static bool HapticsEnabled;
-    public static bool AudioEnable = true;
+    public static ModalitiesEnabled Instance;
+
+    public bool VisualsEnabled { get; set; }
+    public bool HapticsEnabled { get; set; }
+    public bool AudioEnable { get; set; }
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 }

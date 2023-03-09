@@ -12,9 +12,9 @@ public class StepInstructionModalityController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (ModalitiesEnabled.VisualsEnabled) visualModality.SetActive(true);
-        if (ModalitiesEnabled.HapticsEnabled) hapticModality.SetActive(true);
-        if (ModalitiesEnabled.AudioEnable) auditoryModality.SetActive(true);
+        if (ModalitiesEnabled.Instance.VisualsEnabled) visualModality.SetActive(true);
+        if (ModalitiesEnabled.Instance.HapticsEnabled) hapticModality.SetActive(true);
+        if (ModalitiesEnabled.Instance.AudioEnable) auditoryModality.SetActive(true);
     }
 
     private void OnDisable()

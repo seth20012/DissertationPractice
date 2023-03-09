@@ -25,9 +25,6 @@ namespace SequenceLogic
             var mrtkInteractablesSequence = StepUtils.StepSequenceConvert(
                 stepReader.stringStepSequence.uniqueItems, interactables, stepReader.stringStepSequence);
             _positioningSteps = new MRTKInteractableStepSequence(mrtkInteractablesSequence);
-
-            // Begin the sequence
-            _positioningSteps.ContinueSteps();
         }
 
         public void ContinueSteps()
