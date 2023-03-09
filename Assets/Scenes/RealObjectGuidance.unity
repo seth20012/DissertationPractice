@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237648928}
     m_Modifications:
+    - target: {fileID: 136990407680172431, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ea94facb8fa398d4da1ca4193e493f3d, type: 3}
     - target: {fileID: 5836050279702574131, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
       propertyPath: m_Name
       value: StepState (2)
@@ -540,6 +544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237648928}
     m_Modifications:
+    - target: {fileID: 136990407680172431, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c1777fae0e27e1848aea9bd5b80fcfb5, type: 3}
     - target: {fileID: 5836050279702574131, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
       propertyPath: m_Name
       value: StepState (1)
@@ -1073,6 +1081,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237648928}
     m_Modifications:
+    - target: {fileID: 136990407680172431, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3497cb0872814fd4da92c11bed791bc4, type: 3}
     - target: {fileID: 5836050279702574131, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
       propertyPath: m_Name
       value: StepState
@@ -1081,6 +1093,34 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 961288263}
+    - target: {fileID: 5836050279702574285, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: isPokeSelected.onEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836050279702574285, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: isPokeSelected.onEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836050279702574285, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: isPokeSelected.onEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5836050280602355534}
+    - target: {fileID: 5836050279702574285, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: isPokeSelected.onEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836050279702574285, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: isPokeSelected.onEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836050279702574285, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: isPokeSelected.onEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836050279702574285, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+      propertyPath: isPokeSelected.onEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5836050279702574286, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1131,3 +1171,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d0e65c9b0f7f912409ed640d2efb0149, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+--- !u!82 &5836050280602355534 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1822335460805363929, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+  m_PrefabInstance: {fileID: 5836050280602355533}
+  m_PrefabAsset: {fileID: 0}

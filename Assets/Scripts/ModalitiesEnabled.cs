@@ -6,5 +6,5 @@ public static class ModalitiesEnabled
 {
     public static bool VisualsEnabled = true;
     public static bool HapticsEnabled;
-    public static bool AudioEnable;
+    public static bool AudioEnable = true;
 }
