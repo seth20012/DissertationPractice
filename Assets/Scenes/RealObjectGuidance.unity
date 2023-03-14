@@ -208,6 +208,86 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5836050279702574286, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
   m_PrefabInstance: {fileID: 151413416}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &151413419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5836050279880044591, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+  m_PrefabInstance: {fileID: 151413416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &151413420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151413419}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbd8b83257964c49b6c62cdbffa2026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toWrite: {fileID: 458423440}
+  valueToWrite: 240
+--- !u!114 &151413422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151413419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7efb74e3b6e46544a9fe1ed9c71c5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toWrite: {fileID: 458423440}
+  valueToWrite: 240
+--- !u!1 &458423439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 458423441}
+  - component: {fileID: 458423440}
+  m_Layer: 0
+  m_Name: BLEDevice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &458423440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458423439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc6d07becd047342acd1ae8eb8dffcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deviceId: BluetoothLE#BluetoothLEb8:08:cf:58:a9:c8-c1:49:79:f1:60:d0
+  serviceId: 080dee88-6d08-4bf2-988e-171ea83552ba
+  characteristicId: 080dee98-6d08-4bf2-988e-171ea83552ba
+--- !u!4 &458423441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458423439}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.000000007450581, y: 1.7, z: -0.000000007450581}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &616188646
 GameObject:
   m_ObjectHideFlags: 0

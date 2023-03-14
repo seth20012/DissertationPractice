@@ -37,22 +37,40 @@ namespace SequenceLogic
         private void MRTKBeginDefault(Step<MRTKBaseInteractable> step)
         {
             Debug.Log("Start");
-            SetInteractable(step.From, true);
-            SetInteractable(step.To, false);
+
+            step.To.IsPokeSelected.OnExited.RemoveAllListeners();
+            step.From.IsPokeSelected.OnExited.RemoveAllListeners();
+            
+            step.From.gameObject.SetActive(true);
+            step.From.IsPokeSelected.OnExited.AddListener((k) => step.Operation?.Invoke());
+            
+            step.To.gameObject.SetActive(false);
         }
 
         private void MRTKOperationDefault(Step<MRTKBaseInteractable> step)
         {
             Debug.Log("Middle");
-            SetInteractable(step.To, true);
-            SetInteractable(step.From, false);
+
+            step.To.IsPokeHovered.OnExited.RemoveAllListeners();
+            step.From.IsPokeHovered.OnExited.RemoveAllListeners();
+            
+            step.From.gameObject.SetActive(false);
+            
+            step.To.gameObject.SetActive(true);
+            step.To.IsPokeSelected.OnExited.AddListener((k) => step.OnExit?.Invoke());
         }
 
         private void MRTKEndDefault(Step<MRTKBaseInteractable> step)
         {
             Debug.Log("End");
-            SetInteractable(step.To, false);
-            SetInteractable(step.From, false);
+
+            step.From.IsPokeSelected.OnExited.RemoveAllListeners();
+            step.From.gameObject.SetActive(false);
+            
+            step.To.IsPokeSelected.OnExited.RemoveAllListeners();
+            step.To.gameObject.SetActive(false);
+            
+            ContinueSteps();
         }
     }
 }

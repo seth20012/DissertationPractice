@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace SequenceLogic
 {
     public class StepSequence<T>: IEnumerable<Step<T>>
     {
+        protected int Index = 0;
         protected readonly HashSet<T> UniqueItemsSet = new HashSet<T>();
         protected readonly IList<Step<T>> Steps;
 
@@ -22,22 +24,13 @@ namespace SequenceLogic
 
         public virtual IEnumerator<Step<T>> GetEnumerator()
         {
-            foreach(Step<T> step in Steps)
+            while (Index < Steps.Count)
             {
-                switch (step.Status)
-                {
-                    case StepStatus.AtStart:
-                        step.OnEntry?.Invoke();
-                        yield return step;
-                        break;
-                    case StepStatus.InProcess:
-                        step.Operation?.Invoke();
-                        yield return step;
-                        break;
-                    default:
-                        step.OnExit?.Invoke();
-                        continue;
-                }
+                var currentStep = Steps[Index];
+                Debug.Log(Index);
+                currentStep.OnEntry?.Invoke();
+                Index++;
+                yield return currentStep;
             }
         }
 

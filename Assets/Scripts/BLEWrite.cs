@@ -21,6 +21,7 @@ public class BLEWrite : MonoBehaviour, ITakeFloatInput
 
     private void HandleInputChanged(float value)
     {
+        Debug.Log(value);
         byte[] payload = { (byte)(int)value };
         BleApi.BLEData data = new BleApi.BLEData();
         data.buf = new byte[512];
