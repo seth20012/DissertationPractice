@@ -5,12 +5,12 @@ public class ScaleManager : MonoBehaviour
     protected float _currentValue;
     protected ScaleInstance _scaleInstance;
     protected IChangeValue _changingValue;
-    protected ITakeFloatInput _takeFloatInput;
+    protected ITakeInput<float> TakeInput;
 
     protected void Start()
     {
         _changingValue = GetComponent<IChangeValue>();
-        _takeFloatInput = GetComponent<ITakeFloatInput>();
+        TakeInput = GetComponent<ITakeInput<float>>();
         _scaleInstance = GetComponent<ScaleInstance>();
         _changingValue.OnValueChanged?.AddListener(HandleValueChange);
     }
@@ -19,6 +19,6 @@ public class ScaleManager : MonoBehaviour
     {
         _currentValue = _scaleInstance.Scaler.CalculateOutputValue(value);
         Debug.Log(_currentValue);
-        _takeFloatInput.Input = _currentValue;
+        TakeInput.Input = _currentValue;
     }
 }

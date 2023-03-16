@@ -10,6 +10,8 @@ namespace SequenceLogic
     {
         private MRTKInteractableStepSequence _positioningSteps;
 
+        public UnityEvent OnSequenceInstanceEnded { get; private set; } = new UnityEvent();
+        
         [SerializeField] private MRTKBaseInteractable[] interactables;
         [SerializeField] private StepReader stepReader;
 
@@ -21,13 +23,19 @@ namespace SequenceLogic
                 var go = interactable.gameObject;
                 go.SetActive(false);
             }
-
-            var mrtkInteractablesSequence = StepUtils.StepSequenceConvert(
-                stepReader.stringStepSequence.uniqueItems, interactables, stepReader.stringStepSequence);
-            _positioningSteps = new MRTKInteractableStepSequence(mrtkInteractablesSequence);
         }
 
-        public void ContinueSteps()
+        public void CreateSequence()
+        {
+            var mrtkInteractablesSequence = StepUtils.StepSequenceConvert(
+                stepReader.currentSequence.uniqueItems, interactables, stepReader.currentSequence);
+            _positioningSteps = new MRTKInteractableStepSequence(mrtkInteractablesSequence);
+            _positioningSteps.OnMRTKSequenceEnded?.AddListener(OnSequenceInstanceEnded.Invoke);
+            
+            _positioningSteps.ContinueSteps();
+        }
+
+        public void Continue()
         {
             _positioningSteps.ContinueSteps();
         }

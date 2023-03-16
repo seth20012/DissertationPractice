@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-
 #if WINDOWS_UWP
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Bluetooth;
@@ -9,8 +8,10 @@ using Windows.Devices.Enumeration;
 using Windows.Storage.Streams;
 #endif
 
-public class BLEWriteUWP : MonoBehaviour, ITakeFloatInput
+namespace BluetoothLE
 {
+    public class DeviceUWP : MonoBehaviour, ITakeInput<int[]>
+    {
 
 #if WINDOWS_UWP
     private BluetoothLEDevice bluetoothLEDevice = null;
@@ -19,21 +20,20 @@ public class BLEWriteUWP : MonoBehaviour, ITakeFloatInput
     private DeviceWatcher deviceWatcher;
 #endif
 
-    public float Input
-    {
-        set => OnInputChanged?.Invoke(value);
-    }
+        public int[] Input
+        {
+            set => OnInputChanged?.Invoke(value);
+        }
 
-    public UnityEvent<float> OnInputChanged { get; } = new UnityEvent<float>();
+        public UnityEvent<int[]> OnInputChanged { get; } = new UnityEvent<int[]>();
+        [SerializeField] private string bluetoothAddress;
+        [SerializeField] private string serviceUUID;
+        [SerializeField] private string characteristicUUID;
 
-    [SerializeField] private string bluetoothAddress;
-    [SerializeField] private string serviceUUID;
-    [SerializeField] private string characteristicUUID;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        OnInputChanged?.AddListener(SendValue);
+        // Start is called before the first frame update
+        void Start()
+        {
+            OnInputChanged?.AddListener(SendValue);
 #if WINDOWS_UWP
         // Query for extra properties you want returned
         string[] requestedProperties = { "System.Devices.Aep.DeviceAddress", "System.Devices.Aep.IsConnected" };
@@ -57,7 +57,7 @@ public class BLEWriteUWP : MonoBehaviour, ITakeFloatInput
         // Start the watcher.
         deviceWatcher.Start();
 #endif
-    }
+        }
 
 #if WINDOWS_UWP
     private void DeviceWatcher_Stopped(DeviceWatcher sender, object args)
@@ -89,13 +89,14 @@ public class BLEWriteUWP : MonoBehaviour, ITakeFloatInput
     {
     }
 #endif
-    private async void SendValue(float value)
-    {
-        byte[] buffervalue = { (byte)(int)value };
+        private async void SendValue(int[] values)
+        {
+            byte[] buffervalue = { (byte)values[0], (byte)values[1] };
 #if WINDOWS_UWP
         IBuffer writer = buffervalue.AsBuffer();
         var result = await selectedCharacteristic.WriteValueAsync(writer);
 #endif
-        Debug.Log(buffervalue[0]);
+            Debug.Log(buffervalue[0]);
+        }
     }
 }

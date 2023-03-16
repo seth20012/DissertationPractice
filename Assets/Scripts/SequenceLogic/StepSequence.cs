@@ -9,7 +9,8 @@ namespace SequenceLogic
     {
         protected int Index = 0;
         protected readonly HashSet<T> UniqueItemsSet = new HashSet<T>();
-        protected readonly IList<Step<T>> Steps;
+        public readonly IList<Step<T>> Steps;
+        protected UnityEvent OnSequenceEnd { get; private set; } = new UnityEvent();
 
         protected StepSequence(IList<Step<T>> steps)
         {
@@ -32,6 +33,8 @@ namespace SequenceLogic
                 Index++;
                 yield return currentStep;
             }
+            Debug.Log("Sequence Ending!");
+            OnSequenceEnd?.Invoke();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

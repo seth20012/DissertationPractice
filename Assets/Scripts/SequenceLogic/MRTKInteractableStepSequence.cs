@@ -1,16 +1,21 @@
 using System.Collections.Generic;
 using Microsoft.MixedReality.Toolkit;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SequenceLogic
 {
     public class MRTKInteractableStepSequence : StepSequenceWithDefaultBehaviours<MRTKBaseInteractable>
     {
+        public UnityEvent OnMRTKSequenceEnded { get; private set; }= new UnityEvent();
+        
         public MRTKInteractableStepSequence(IList<Step<MRTKBaseInteractable>> steps) : base(steps)
         {
             OnAllBegin?.AddListener(MRTKBeginDefault);
             OnAllOperation?.AddListener(MRTKOperationDefault);
             OnAllEnd?.AddListener(MRTKEndDefault);
+            
+            OnSequenceEnd?.AddListener(OnMRTKSequenceEnded.Invoke);
         }
 
         /// <summary>

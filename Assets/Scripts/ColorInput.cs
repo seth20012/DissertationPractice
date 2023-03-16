@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ColorInput : MonoBehaviour, ITakeFloatInput
+public class ColorInput : MonoBehaviour, ITakeInput<float>
 {
     public UnityEvent<float> OnInputChanged { get; private set; } = new UnityEvent<float>();
     public float Input

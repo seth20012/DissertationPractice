@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RumbleInput : MonoBehaviour, ITakeFloatInput
+public class RumbleInput : MonoBehaviour, ITakeInput<float>
 {
     public UnityEvent<float> OnInputChanged { get; } = new UnityEvent<float>();
     public float Input
