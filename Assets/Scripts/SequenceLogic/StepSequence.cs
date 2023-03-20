@@ -28,12 +28,10 @@ namespace SequenceLogic
             while (Index < Steps.Count)
             {
                 var currentStep = Steps[Index];
-                Debug.Log(Index);
                 currentStep.OnEntry?.Invoke();
                 Index++;
                 yield return currentStep;
             }
-            Debug.Log("Sequence Ending!");
             OnSequenceEnd?.Invoke();
         }
 

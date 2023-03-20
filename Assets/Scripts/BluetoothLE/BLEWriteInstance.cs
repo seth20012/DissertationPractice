@@ -12,12 +12,12 @@ namespace BluetoothLE
         [Range(0, 255)] [SerializeField] protected int length;
         [SerializeField] private DeviceUWP device;
 
-        protected void Start()
+        protected void Awake()
         {
             writer = new BLEWrite(device);
         }
 
-        public void Write()
+        public virtual void Write()
         {
             writer.Write(strength, length);
         }

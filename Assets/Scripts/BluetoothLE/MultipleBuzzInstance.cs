@@ -10,7 +10,7 @@ namespace BluetoothLE
 
         [SerializeField] private float delayBetween;
 
-        public void Write()
+        public override void Write()
         {
             StartCoroutine(MultiSend(numberOfRepeats, delayBetween));
         }
@@ -20,6 +20,7 @@ namespace BluetoothLE
             for (var i = 0; i < repeats; i++)
             {
                 base.Write();
+                strength -= 1;
                 yield return new WaitForSeconds(delay);
             }
         }

@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
+
 #if WINDOWS_UWP
+using System;
+using System.Threading.Tasks;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;

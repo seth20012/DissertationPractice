@@ -41,8 +41,6 @@ namespace SequenceLogic
 
         private void MRTKBeginDefault(Step<MRTKBaseInteractable> step)
         {
-            Debug.Log("Start");
-
             step.To.IsPokeSelected.OnExited.RemoveAllListeners();
             step.From.IsPokeSelected.OnExited.RemoveAllListeners();
             
@@ -54,8 +52,6 @@ namespace SequenceLogic
 
         private void MRTKOperationDefault(Step<MRTKBaseInteractable> step)
         {
-            Debug.Log("Middle");
-
             step.To.IsPokeHovered.OnExited.RemoveAllListeners();
             step.From.IsPokeHovered.OnExited.RemoveAllListeners();
             
@@ -67,8 +63,6 @@ namespace SequenceLogic
 
         private void MRTKEndDefault(Step<MRTKBaseInteractable> step)
         {
-            Debug.Log("End");
-
             step.From.IsPokeSelected.OnExited.RemoveAllListeners();
             step.From.gameObject.SetActive(false);
             
