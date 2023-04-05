@@ -1,17 +1,27 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using BluetoothLE;
 using SequenceLogic;
 using UnityEngine;
 
-public class StartMenu : MonoBehaviour
+namespace UX
 {
-    [SerializeField] private StepReader stepReader;
-    [SerializeField] private MRTKInteractableSequenceInstance mrtkInteractableSequenceInstance;
-
-    private void Start()
+    public class StartMenu : MonoBehaviour
     {
-        mrtkInteractableSequenceInstance.OnSequenceInstanceEnded?.AddListener(() => gameObject.SetActive(true));
-        stepReader.OnNoMoreSequences?.AddListener(() => gameObject.SetActive(false));
+        [SerializeField] private StepReader stepReader;
+        [SerializeField] private MRTKInteractableSequenceInstance mrtkInteractableSequenceInstance;
+        [SerializeField] private DeviceUWP leftDevice, rightDevice;
+
+        private void Start()
+        {
+            mrtkInteractableSequenceInstance.OnSequenceInstanceEnded?.AddListener(() => gameObject.SetActive(true));
+            stepReader.OnNoMoreSequences?.AddListener(() => gameObject.SetActive(false));
+        }
+
+        public void HapticsToggled(bool toggled)
+        {
+            if (!toggled) return;
+            // Wake up watches
+            leftDevice.Input = new int[] { 200, 100 };
+            rightDevice.Input = new int[] { 200, 100 };
+        }
     }
 }

@@ -12,9 +12,9 @@ public class StepInstructionModalityController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (ModalitiesEnabled.Instance.VisualsEnabled) visualModality.SetActive(true);
-        if (ModalitiesEnabled.Instance.HapticsEnabled) hapticModality.SetActive(true);
-        if (ModalitiesEnabled.Instance.AudioEnable) auditoryModality.SetActive(true);
+        if (ModalitiesEnabled.Instance.VisualsEnabled) StartCoroutine(DelayModality(visualModality));
+        if (ModalitiesEnabled.Instance.HapticsEnabled) StartCoroutine(DelayModality(hapticModality));
+        if (ModalitiesEnabled.Instance.AudioEnable) StartCoroutine(DelayModality(auditoryModality));
     }
 
     private void OnDisable()
@@ -22,5 +22,11 @@ public class StepInstructionModalityController : MonoBehaviour
         visualModality.SetActive(false);
         hapticModality.SetActive(false);
         auditoryModality.SetActive(false);
+    }
+
+    private IEnumerator DelayModality(GameObject modality)
+    {
+        yield return new WaitForSeconds(0.25f);
+        modality.SetActive(true);
     }
 }

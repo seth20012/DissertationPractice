@@ -16,6 +16,7 @@ namespace SequenceLogic
             OnAllEnd?.AddListener(MRTKEndDefault);
             
             OnSequenceEnd?.AddListener(OnMRTKSequenceEnded.Invoke);
+            OnSequenceEnd?.AddListener(ResetDesk);
         }
 
         /// <summary>
@@ -41,35 +42,34 @@ namespace SequenceLogic
 
         private void MRTKBeginDefault(Step<MRTKBaseInteractable> step)
         {
-            step.To.IsPokeSelected.OnExited.RemoveAllListeners();
-            step.From.IsPokeSelected.OnExited.RemoveAllListeners();
-            
+            ResetDesk();
+
             step.From.gameObject.SetActive(true);
             step.From.IsPokeSelected.OnExited.AddListener((k) => step.Operation?.Invoke());
-            
-            step.To.gameObject.SetActive(false);
         }
 
         private void MRTKOperationDefault(Step<MRTKBaseInteractable> step)
         {
-            step.To.IsPokeHovered.OnExited.RemoveAllListeners();
-            step.From.IsPokeHovered.OnExited.RemoveAllListeners();
-            
-            step.From.gameObject.SetActive(false);
-            
+            ResetDesk();
+
             step.To.gameObject.SetActive(true);
             step.To.IsPokeSelected.OnExited.AddListener((k) => step.OnExit?.Invoke());
         }
 
         private void MRTKEndDefault(Step<MRTKBaseInteractable> step)
         {
-            step.From.IsPokeSelected.OnExited.RemoveAllListeners();
-            step.From.gameObject.SetActive(false);
-            
-            step.To.IsPokeSelected.OnExited.RemoveAllListeners();
-            step.To.gameObject.SetActive(false);
-            
+            ResetDesk();
+
             ContinueSteps();
+        }
+
+        private void ResetDesk()
+        {
+            foreach (var item in UniqueItemsSet)
+            {
+                item.IsPokeSelected.OnExited.RemoveAllListeners();
+                item.gameObject.SetActive(false);
+            }
         }
     }
 }
