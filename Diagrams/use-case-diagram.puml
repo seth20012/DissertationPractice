@@ -1,0 +1,27 @@
+@startuml "Use Case Diagram"
+left to right direction
+
+actor User
+actor Manager
+
+rectangle "XR Application" <<subsystem>> {
+    (View List of Available Jobs) as UC1
+    (Select Modalities) as UC2
+    (Select an Available Job to Perform) as UC3
+    (Receive Job Instructions) as UC4
+}
+
+rectangle "Job Storage System" <<subsystem>> {
+    (Publish list of Available Jobs) as UC5
+}
+
+UC1 -.-> UC5 : <<requires>>
+UC3 -.-> UC5 : <<requires>>
+UC4 -.-> UC5 : <<requires>>
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+
+Manager -up-> UC5
+@enduml

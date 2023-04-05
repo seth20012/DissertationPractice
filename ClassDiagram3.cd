@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="_3DGuidance.ActiveToggle" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAIAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\ActiveToggle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_3DGuidance.AngleTracker2D" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAACAAAAAAAAAAAAAAEAAAAAEAAEAgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\AngleTracker2D.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="_3DGuidance.AudioGuide" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAACAAAAAAAAACAQAAAIAAAAAAAQAAACEA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\AudioGuide.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_3DGuidance.ColorInput" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQAAAAAAQAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\ColorInput.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="_3DGuidance.DistanceTracker2D" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAEAAAAAEIAAAgAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\DistanceTracker2D.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="_3DGuidance.ExponentialScaleInstance" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAUAAAAAAABAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\ExponentialScaleInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_3DGuidance.ExponentialScaler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAIAAAAAAAAAAAEAFAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\ExponentialScaler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="_3DGuidance.ExponentialUtils" Collapsed="true">
+    <Position X="17.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\ExponentialUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_3DGuidance.HandIdentifier" Collapsed="true">
+    <Position X="10.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAECAABAAAAIAAAAAABAAAAAEIAAAIBIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\HandIdentifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_3DGuidance.OnlyTakeGreaterInput" Collapsed="true">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAAAAAAEAAAAAAAAAAAACAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\OnlyTakeGreaterInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_3DGuidance.Resizer" Collapsed="true">
+    <Position X="9" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACgAAAAAAAAQAAAAAAAAAAQAAAAAAAAAABA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\Resizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_3DGuidance.ScaleInstance" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\ScaleInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_3DGuidance.ScaleManager" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAQAAAIAAAAAAAAAEAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\ScaleManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_3DGuidance.SineScale" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\3DGuidance\SineScale.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BluetoothLE.BleApi" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAB4AACIEAAEBBAAAQAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Scripts\BluetoothLE\BleApi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BluetoothLE.BLEBuzz" Collapsed="true">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\BluetoothLE\BLEBuzz.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BluetoothLE.BLEBuzzInstance" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAACEAAAAAAAAAAAAAAQAAAAAEAAEA=</HashCode>
+      <FileName>Assets\Scripts\BluetoothLE\BLEBuzzInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BluetoothLE.BuzzOnTouch" Collapsed="true">
+    <Position X="10.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgECAAABEAAIAAACAAgAAAAAAIAIAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\BluetoothLE\BuzzOnTouch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BluetoothLE.DeviceEditor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAIAACAAQAAAEAAAAAAAEAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\BluetoothLE\DeviceEditor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BluetoothLE.DeviceUWP" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAACAAQAAAAAAAAAAAEAAAAAgAAAAAEAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\BluetoothLE\DeviceUWP.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BluetoothLE.MultipleBuzzInstance" Collapsed="true">
+    <Position X="3.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAABABAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\BluetoothLE\MultipleBuzzInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BluetoothLE.WriteOnEnable" Collapsed="true">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQACAA=</HashCode>
+      <FileName>Assets\Scripts\BluetoothLE\WriteOnEnable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Extensions.GOExtensions" Collapsed="true">
+    <Position X="9" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Extensions\GOExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModalitiesEnabled" Collapsed="true">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAEAAQAAAAAAQAEA=</HashCode>
+      <FileName>Assets\Scripts\ModalitiesEnabled.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PS4Controller" Collapsed="true">
+    <Position X="17.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAADAAAAAAAAAIAAAAAAAAAAAAABAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\PS4Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RumbleInput" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQAEAAAAAAAAAEAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\RumbleInput.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SequenceLogic.InteractablesManager" Collapsed="true">
+    <Position X="12.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\InteractablesManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SequenceLogic.MRTKInteractableSequenceInstance" Collapsed="true">
+    <Position X="13.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAAAAAAAAAAQAAAAABACQAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\MRTKInteractableSequenceInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SequenceLogic.MRTKInteractableStepSequence" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKAAAAAAAAAAAAEAAAAAAACAAAQAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\MRTKInteractableStepSequence.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SequenceLogic.Step&lt;T&gt;" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAEAAAAAAAAAAAAAAAAAAAYAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\Step.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SequenceLogic.StepInstructionModalityController" Collapsed="true">
+    <Position X="8.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAgAAAAAAAAAgAAAAAAAAAAAIAAAAAAAAGAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\StepInstructionModalityController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SequenceLogic.StepReader" Collapsed="true">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAIAAAAAAAAAgAAAAAABAEA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\StepReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SequenceLogic.StepSequence&lt;T&gt;" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAAAAAAABAAAAAgAAAAAAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\StepSequence.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SequenceLogic.StepSequenceWithDefaultBehaviours&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\StepSequenceWithDefaultBehaviours.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SequenceLogic.StepUtils" Collapsed="true">
+    <Position X="12" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\StepUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SequenceLogic.StringStepSequence" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\StringStepSequence.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UX.SkipMenu" Collapsed="true">
+    <Position X="6.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UX\SkipMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UX.StartMenu" Collapsed="true">
+    <Position X="13.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAEEAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UX\StartMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Interfaces.IChangeValue" Collapsed="true">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\IChangeValue.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Interfaces.IScale" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\IScale.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Interfaces.ITakeInput&lt;T&gt;" Collapsed="true">
+    <Position X="12" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\ITakeInput.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SequenceLogic.StepStatus" Collapsed="true">
+    <Position X="6.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SequenceLogic\Step.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

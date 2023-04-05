@@ -1,0 +1,28 @@
+@startuml "Deployment Diagram"
+
+skinparam linetype ortho
+
+frame deployment {
+    node "Mixed Reality Headset" <<device>> as XR {
+        artifact "Mixed Reality Application" {
+            artifact "Visual Modality"
+            artifact "Auditory Modality"
+        }
+    }
+
+    node "Smartwatch" <<device>> as Watch {
+        artifact "BLE Application" {
+            artifact "Haptic Modality"
+        }
+    }
+
+    node "Job System" <<database>> as JobSystem {
+        collections Jobs    
+    }
+
+    XR -down-> Watch
+    XR --left--> JobSystem
+
+}
+
+@enduml
