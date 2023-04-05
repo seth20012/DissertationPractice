@@ -1,25 +1,36 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace SequenceLogic
 {
+    /// <summary>
+    /// Read a list of task steps from a JSON list
+    /// </summary>
     public class StepReader : MonoBehaviour
     {
+        
+        /// <summary>
+        /// The current index for the active list of instructions
+        /// </summary>
         public int index { get; set; }
-        public List<StringStepSequence> stringStepSequences { get; private set; } = new List<StringStepSequence>();
-        public StringStepSequence currentSequence => stringStepSequences[index];
-        public UnityEvent OnNoMoreSequences { get; private set; } = new UnityEvent();
+        
+        /// <summary>
+        /// The current list of instructions
+        /// </summary>
+        public StringStepSequence currentSequence => _stringStepSequences[index];
+
+        private readonly List<StringStepSequence> _stringStepSequences = new List<StringStepSequence>();
 
         [SerializeField] private TextAsset[] jsonStepsLists;
-        // Start is called before the first frame update
+        
         private void Awake()
         {
+            // Load in the task lists from the supplied json files
             foreach (var jsonSteps in jsonStepsLists)
             {
                 var stepList = JsonConvert.DeserializeObject<List<Step<string>>>(jsonSteps.ToString());
-                stringStepSequences.Add(new StringStepSequence(stepList));
+                _stringStepSequences.Add(new StringStepSequence(stepList));
             }
         }
     }

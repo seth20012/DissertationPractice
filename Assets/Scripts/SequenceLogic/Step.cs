@@ -9,29 +9,47 @@ namespace SequenceLogic
         AtEnd
     }
 
+    /// <summary>
+    /// A task that instructs a user to move a physical object from one location to another
+    /// </summary>
+    /// <typeparam name="T">The type of the virtual objects that guide the user</typeparam>
     public class Step<T>
     {
         /// <summary>
-        /// The item correlating to the beginning of the step
+        /// The virtual object indicating the starting location of the physical object
         /// </summary>
-        public T From { get; private set; }
+        public T From { get; }
     
         /// <summary>
-        /// The item correlating to the end of the step
+        /// The virtual object indicating the finishing location of the physical object
         /// </summary>
-        public T To { get; private set; }
+        public T To { get; }
     
         /// <summary>
         /// The status of the step
         /// </summary>
         public StepStatus Status { get; set; }
 
+        /// <summary>
+        /// Subscribable event triggered when step starts
+        /// </summary>
         public UnityEvent OnEntry = new UnityEvent();
-
+        
+        /// <summary>
+        /// Subscribable event triggered when users begins moving the object
+        /// </summary>
         public UnityEvent Operation = new UnityEvent();
 
+        /// <summary>
+        /// Subscribable event triggered when user has completed a step
+        /// </summary>
         public UnityEvent OnExit = new UnityEvent();
         
+        /// <summary>
+        /// Step constructor
+        /// </summary>
+        /// <param name="from">Start object</param>
+        /// <param name="to">Destination object</param>
         public Step(T from, T to)
         {
             From = from;

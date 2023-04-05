@@ -1,3 +1,4 @@
+using Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +14,9 @@ using Windows.Storage.Streams;
 
 namespace BluetoothLE
 {
+    /// <summary>
+    /// BLE Device. Will only compile when running on a UWP device
+    /// </summary>
     public class DeviceUWP : MonoBehaviour, ITakeInput<int[]>
     {
 
@@ -23,6 +27,9 @@ namespace BluetoothLE
     private DeviceWatcher deviceWatcher;
 #endif
 
+        /// <summary>
+        /// List of integers corresponding to buzz strength and length
+        /// </summary>
         public int[] Input
         {
             set => OnInputChanged?.Invoke(value);
@@ -36,6 +43,7 @@ namespace BluetoothLE
         // Start is called before the first frame update
         void Start()
         {
+            // Send values to peripheral device over BLE
             OnInputChanged?.AddListener(SendValue);
 #if WINDOWS_UWP
         // Query for extra properties you want returned

@@ -1,51 +1,54 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using BluetoothLE;
 using Microsoft.MixedReality.Toolkit;
 using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class BuzzOnTouch : MonoBehaviour
+namespace BluetoothLE
 {
-    private BLEWrite _leftWrite;
-    private BLEWrite _rightWrite;
+    /// <summary>
+    /// Creates a buzz on the wrist of the users hand that is touching the object
+    /// </summary>
+    public class BuzzOnTouch : MonoBehaviour
+    {
+        private BLEBuzz _leftBuzz;
+        private BLEBuzz _rightBuzz;
     
-    [SerializeField] private MRTKBaseInteractable interactable;
-    [SerializeField] private PokeInteractor leftHand;
-    [SerializeField] private PokeInteractor rightHand;
-    [SerializeField] private DeviceUWP leftDevice;
-    [SerializeField] private DeviceUWP rightDevice;
+        [SerializeField] private MRTKBaseInteractable interactable;
+        [SerializeField] private PokeInteractor leftHand;
+        [SerializeField] private PokeInteractor rightHand;
+        [SerializeField] private DeviceUWP leftDevice;
+        [SerializeField] private DeviceUWP rightDevice;
 
-    private void Start()
-    {
-        _leftWrite = new BLEWrite(leftDevice);
-        _rightWrite = new BLEWrite(rightDevice);
-    }
-
-    private void OnEnable()
-    {
-        interactable.firstSelectEntered?.AddListener(OnPoke);
-    }
-
-    private void OnDisable()
-    {
-        interactable.firstSelectEntered?.RemoveListener(OnPoke);
-    }
-
-    private void OnPoke(SelectEnterEventArgs args)
-    {
-        var interactor = args.interactorObject;
-
-        if ((PokeInteractor)interactor == leftHand)
+        private void Start()
         {
-            _leftWrite.Write(180, 30);
+            _leftBuzz = new BLEBuzz(leftDevice);
+            _rightBuzz = new BLEBuzz(rightDevice);
         }
-        else if ((PokeInteractor)interactor == rightHand)
+
+        private void OnEnable()
         {
-            _rightWrite.Write(180, 30);
+            interactable.firstSelectEntered?.AddListener(OnPoke);
+        }
+
+        private void OnDisable()
+        {
+            interactable.firstSelectEntered?.RemoveListener(OnPoke);
+        }
+
+        private void OnPoke(SelectEnterEventArgs args)
+        {
+            // The interactor that poked object
+            var interactor = args.interactorObject;
+            
+            // Buzz the corresponding wrist
+            if ((PokeInteractor)interactor == leftHand)
+            {
+                _leftBuzz.Write(180, 30);
+            }
+            else if ((PokeInteractor)interactor == rightHand)
+            {
+                _rightBuzz.Write(180, 30);
+            }
         }
     }
 }
