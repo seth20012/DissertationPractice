@@ -1,8 +1,5 @@
 @startuml "Class Diagram"
 
-scale 800 height
-scale 400 width
-
 skinparam Linetype ortho
 
 interface "ITakeInput<T>"
@@ -25,22 +22,22 @@ deviceUWP : -String characteristicUUID
 deviceUWP : -async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation args)
 deviceUWP : -async void SendValue(int[] values)
 
-"ITakeInput<int[]>" <|--- deviceUWP
+"ITakeInput<int[]>" <|.. deviceUWP
 
 class BLEBuzz
 BLEBuzz : -readonly DeviceUWP _deviceUWP
 BLEBuzz : +BLEBuzz(DeviceUWP device)
 BLEBuzz : +Write(int strength, int length)
 
-BLEBuzz -- deviceUWP
+BLEBuzz --> deviceUWP
 
 class "BLEBuzzInstance : MonoBehaviour" as buzzInst
 buzzInst : #int strength
 buzzInst : #int length
 buzzInst : +void Write()
 
-buzzInst -- deviceUWP
-buzzInst -- BLEBuzz
+buzzInst --> deviceUWP
+buzzInst *-- BLEBuzz
 class "MultipleBuzzInstance : MonoBehaviour" as multiBuzzInst
 multiBuzzInst : -IEnumerator MultiSend(int repeats, float delay)
 multiBuzzInst : +override void Write()
@@ -108,7 +105,7 @@ class "StepSequenceWithDefaultBehaviours<MRTKBaseInteractable>" as stepSeqWithDe
 "Step<T>" <|-- "Step<string>"
 "Step<T>" <|-- "Step<MRTKBaseInteractable>"
 
-stepSequence -- "Step<T>"
+stepSequence *-- "Step<T>"
 stepSequence <|-- "StepSequence<string>"
 stepSequence <|-- "StepSequence<MRTKBaseInteractable>"
 stepSequence <|-- "StepSequenceWithDefaultBehaviours<T>"
@@ -122,8 +119,8 @@ mrtkStepSequence : -void MRTKOperationDefault(Step<MRTKBaseInteractable> step)
 mrtkStepSequence : -void MRTKEndDefault(Step<MRTKBaseInteractable> step)
 mrtkStepSequence : -void ResetDesk()
 
-stepSeqWithDefaultMRTK <|-- mrtkStepSequence
-mrtkInstance -- mrtkStepSequence
+stepSeqWithDefaultMRTK <|.. mrtkStepSequence
+mrtkInstance *-- mrtkStepSequence
 
 class "SkipMenu : MonoBehaviour" as skipMenu
 skipMenu : -MRTKInteractableSequenceInstance mrtkInteractableSequenceInstance
@@ -133,10 +130,10 @@ startMenu : -MRTKInteractableSequenceInstance mrtkInteractableSequenceInstance
 startMenu : -DeviceUWP leftDevice
 startMenu : -DeviceUWP rightDevice
 
-startMenu -- mrtkInstance
-skipMenu -- mrtkInstance
+startMenu --> mrtkInstance
+skipMenu --> mrtkInstance
 
-mrtkInstance -- stepReader
-stepReader -- stepSequence
-buzzEnable -- buzzInst
+mrtkInstance --> stepReader
+stepReader *-- "StepSequence<string>"
+buzzEnable *-- buzzInst
 @enduml
