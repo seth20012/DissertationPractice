@@ -1,0 +1,110 @@
+@startuml "Class Diagram"
+interface "ITakeInput<T>"
+"ITakeInput<T>" : T Input 
+"ITakeInput<T>" : UnityEvent<T> OnInputChanged 
+
+interface "ITakeInput<float>"
+interface "ITakeInput<int[]>"
+
+"ITakeInput<T>" <|-- "ITakeInput<float>"
+"ITakeInput<T>" <|-- "ITakeInput<int[]>"
+
+class "DeviceUWP : MonoBehaviour" as deviceUWP
+deviceUWP : -BluetoothLEDevice bluetoothLEDevice
+deviceUWP : -GattDeviceService selectedService
+deviceUWP : -DeviceWatcher deviceWatcher
+deviceUWP : -String BluetoothAddress
+deviceUWP : -String serviceUUID
+deviceUWP : -String characteristicUUID
+deviceUWP : -async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation args)
+deviceUWP : -async void SendValue(int[] values)
+
+"ITakeInput<int[]>" <|--- deviceUWP
+
+class "BLEBuzzInstance : MonoBehaviour" as buzzInst
+buzzInst : #int strength
+buzzInst : #int length
+buzzInst : +void Write()
+
+class "MultipleBuzzInstance : MonoBehaviour" as multiBuzzInst
+multiBuzzInst : -IEnumerator MultiSend(int repeats, float delay)
+multiBuzzInst : +override void Write()
+
+buzzInst <|-- multiBuzzInst
+
+class "WriteOnEnable : MonoBehaviour" as buzzEnable
+buzzEnable : -BLEBuzzInstance[] BleWriteInstances
+
+class "ModalitiesEnabled : MonoBehaviour" as modalityEnable
+modalityEnable : +static ModalitiesEnabled Instance
+modalityEnable : +bool VisualsEnabled
+modalityEnable : +bool HapticsEnabled
+modalityEnable : +bool AudioEnable
+
+class "MRTKInteractableSequenceInstance : MonoBehaviour" as mrtkInstance
+mrtkInstance : -MRTKInteractableStepSequence _mrtkInteractableStepSequence
+mrtkInstance : -MRTKBaseInteractable[] interactables
+mrtkInstance : -StepReader stepReader
+mrtkInstance : +UnityEvent OnSequenceInstanceEnded
+mrtkInstance : +void CreateSequence()
+mrtkInstance : +void Continue()
+
+class "StepInstructionModalityController : MonoBehaviour" as instructionModalities
+instructionModalities : -GameObject visualModality
+instructionModalities : -GameObject hapticModality
+instructionModalities : -GameObject auditoryModality
+instructionModalities : -IEnumerator DelayModality(GameObject modality)
+
+class "StepReader : MonoBehaviour" as stepReader
+stepReader : -readonly List<StringStepSequence> _stringStepSequences
+stepReader : -TextAsset[] jsonStepsLists
+stepReader : +int index
+stepReader : +StringStepSequence currentSequence
+
+class "Step<T>"
+"Step<T>" : +T From
+"Step<T>" : +T To
+"Step<T>" : +StepStatus Status
+"Step<T>" : +UnityEvent OnEntry
+"Step<T>" : +UnityEvent Operation
+"Step<T>" : +UnityEvent OnExit
+"Step<T>" : +Step(T from, T to)
+
+class "Step<string>"
+class "Step<MRTKBaseInteractable>"
+class "StepSequence<T> : IEnumerable<Step>>" as stepSequence
+stepSequence : -int _index
+stepSequence : #HashSet<T> UniqueItemsSet
+stepSequence : #UnityEvent OnSequenceEnd
+stepSequence : +readonly IList<Step<T>> Steps
+stepSequence : #StepSequence(IList<Step<T>> steps)
+stepSequence : +virtual IEnumerator<Step<T>> GetEnumerator
+stepSequence : -IEnumerator IEnumerable.GetEnumerator()
+
+class "StepSequence<string>"
+class "StepSequenceWithDefaultBehaviours<T>"
+"StepSequenceWithDefaultBehaviours<T>" : #readonly UnityEvent<Step<T>> OnAllBegin
+"StepSequenceWithDefaultBehaviours<T>" : #readonly UnityEvent<Step<T>> OnAllOperation
+"StepSequenceWithDefaultBehaviours<T>" : #readonly UnityEvent<Step<T>> OnAllEnd
+"StepSequenceWithDefaultBehaviours<T>" : #StepSequenceWithDefaultBehaviours(IList<Step<T>> steps) : base(steps)
+
+class "StepSequenceWithDefaultBehaviours<MRTKBaseInteractable>" as stepSeqWithDefaultMRTK
+
+"Step<T>" <|-- "Step<string>"
+"Step<T>" <|-- "Step<MRTKBaseInteractable>"
+
+stepSequence <|-- "StepSequence<string>"
+stepSequence <|-- "StepSequence<MRTKBaseInteractable>"
+stepSequence <|-- "StepSequenceWithDefaultBehaviours<T>"
+"StepSequenceWithDefaultBehaviours<T>" <|-- stepSeqWithDefaultMRTK
+
+class "MRTKInteractableStepSequence" as mrtkStepSequence
+mrtkStepSequence : +MRTKInteractableStepSequence(IList<Step<MRTKBaseInteractable>> steps) : base(steps)
+mrtkStepSequence : +void ContinueSteps()
+mrtkStepSequence : -void MRTKBeginDefault(Step<MRTKBaseInteractable> step)
+mrtkStepSequence : -void MRTKOperationDefault(Step<MRTKBaseInteractable> step)
+mrtkStepSequence : -void MRTKEndDefault(Step<MRTKBaseInteractable> step)
+mrtkStepSequence : -void ResetDesk()
+
+stepSeqWithDefaultMRTK <|-- mrtkStepSequence 
+@enduml
