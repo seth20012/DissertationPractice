@@ -1,4 +1,8 @@
 @startuml "Class Diagram"
+
+scale 800 height
+scale 400 width
+
 interface "ITakeInput<T>"
 "ITakeInput<T>" : T Input 
 "ITakeInput<T>" : UnityEvent<T> OnInputChanged 
@@ -21,6 +25,11 @@ deviceUWP : -async void SendValue(int[] values)
 
 "ITakeInput<int[]>" <|--- deviceUWP
 
+class BLEBuzz
+BLEBuzz : -readonly DeviceUWP _deviceUWP
+BLEBuzz : +BLEBuzz(DeviceUWP device)
+BLEBuzz : +Write(int strength, int length)
+
 class "BLEBuzzInstance : MonoBehaviour" as buzzInst
 buzzInst : #int strength
 buzzInst : #int length
@@ -35,7 +44,7 @@ buzzInst <|-- multiBuzzInst
 class "WriteOnEnable : MonoBehaviour" as buzzEnable
 buzzEnable : -BLEBuzzInstance[] BleWriteInstances
 
-class "ModalitiesEnabled : MonoBehaviour" as modalityEnable
+class "ModalitiesEnabled : MonoBehaviour" as modalityEnable << (S,#FF7700) Singleton >>
 modalityEnable : +static ModalitiesEnabled Instance
 modalityEnable : +bool VisualsEnabled
 modalityEnable : +bool HapticsEnabled
@@ -106,5 +115,14 @@ mrtkStepSequence : -void MRTKOperationDefault(Step<MRTKBaseInteractable> step)
 mrtkStepSequence : -void MRTKEndDefault(Step<MRTKBaseInteractable> step)
 mrtkStepSequence : -void ResetDesk()
 
-stepSeqWithDefaultMRTK <|-- mrtkStepSequence 
+stepSeqWithDefaultMRTK <|-- mrtkStepSequence
+
+class "SkipMenu : MonoBehaviour" as skipMenu
+skipMenu : -MRTKInteractableSequenceInstance mrtkInteractableSequenceInstance
+
+class "StartMenu : MonoBehaviour" as startMenu
+startMenu : -MRTKInteractableSequenceInstance mrtkInteractableSequenceInstance
+startMenu : -DeviceUWP leftDevice
+startMenu : -DeviceUWP rightDevice
+
 @enduml
