@@ -1017,6 +1017,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5836050279702574286, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
   m_PrefabInstance: {fileID: 828780771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &828780775 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5836050279702574130, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+  m_PrefabInstance: {fileID: 828780771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2c736796463c54984065e28fc0e928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &859905256 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1619375032725711555, guid: ac3d4f06730b35a4eb024427dcb07a1f, type: 3}
@@ -1115,7 +1126,7 @@ PrefabInstance:
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1165714937}
+      objectReference: {fileID: 1165714938}
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1126,7 +1137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SequenceLogic.MRTKInteractableSequenceInstance, Assembly-CSharp
+      value: ZoneStepSequenceInstance, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1250,6 +1261,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5836050279702574286, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
   m_PrefabInstance: {fileID: 5836050280602355533}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1046672261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5836050279702574130, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+  m_PrefabInstance: {fileID: 5836050280602355533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2c736796463c54984065e28fc0e928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1046746717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,6 +1393,7 @@ GameObject:
   - component: {fileID: 1165714936}
   - component: {fileID: 1165714935}
   - component: {fileID: 1165714937}
+  - component: {fileID: 1165714938}
   m_Layer: 0
   m_Name: Steps
   m_TagString: Untagged
@@ -1417,7 +1440,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165714934}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d572f75de08bbf41a708b200ec27b62, type: 3}
   m_Name: 
@@ -1427,6 +1450,24 @@ MonoBehaviour:
   - {fileID: 828780772}
   - {fileID: 151413417}
   - {fileID: 1081569726}
+  stepReader: {fileID: 1165714935}
+--- !u!114 &1165714938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165714934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520515cb6afe34a499f22895a7a85eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zones:
+  - {fileID: 1046672261}
+  - {fileID: 828780775}
+  - {fileID: 1298299552}
+  - {fileID: 1500192001}
   stepReader: {fileID: 1165714935}
 --- !u!1 &1226751515
 GameObject:
@@ -1479,8 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991fad3a71ea19f4cbe3c9914960c156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepReader: {fileID: 1165714935}
-  mrtkInteractableSequenceInstance: {fileID: 1165714937}
+  sequenceInstance: {fileID: 1165714938}
   leftDevice: {fileID: 1478148548}
   rightDevice: {fileID: 458423442}
 --- !u!1 &1237648927
@@ -1669,6 +1709,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5870931076965904817, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
   m_PrefabInstance: {fileID: 1278456283}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1298299552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5836050279702574130, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+  m_PrefabInstance: {fileID: 151413416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2c736796463c54984065e28fc0e928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1315952426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1855,7 +1906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1e7ed6cb4de694aaf2cc2a3e4b8793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mrtkInteractableSequenceInstance: {fileID: 1165714937}
+  sequenceInstance: {fileID: 1165714938}
 --- !u!1 &1478148547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,6 +1970,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1500192001 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5836050279702574130, guid: 1a13bc13730c2844eb7f0e3881f4c6db, type: 3}
+  m_PrefabInstance: {fileID: 1932819934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2c736796463c54984065e28fc0e928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1657066969 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7591774414076744447, guid: d4ce83b8ab85d86408f92a7184cd4fad, type: 3}
@@ -2072,7 +2134,7 @@ PrefabInstance:
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1165714937}
+      objectReference: {fileID: 1165714938}
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2107,7 +2169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SequenceLogic.MRTKInteractableSequenceInstance, Assembly-CSharp
+      value: ZoneStepSequenceInstance, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName

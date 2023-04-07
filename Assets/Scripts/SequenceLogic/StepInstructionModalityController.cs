@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SequenceLogic
 {
@@ -8,6 +10,9 @@ namespace SequenceLogic
     /// </summary>
     public class StepInstructionModalityController : MonoBehaviour
     {
+        // Called when a hand exits the zone
+        public UnityEvent HandExited { get; } = new UnityEvent();
+        
         // The modality GameObjects
         [SerializeField] private GameObject visualModality;
         [SerializeField] private GameObject hapticModality;
@@ -35,5 +40,7 @@ namespace SequenceLogic
             yield return new WaitForSeconds(0.25f);
             modality.SetActive(true);
         }
+
+        private void OnTriggerExit(Collider other) => HandExited?.Invoke();
     }
 }

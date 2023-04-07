@@ -1,6 +1,7 @@
 using BluetoothLE;
 using SequenceLogic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UX
 {
@@ -9,13 +10,13 @@ namespace UX
     /// </summary>
     public class StartMenu : MonoBehaviour
     {
-        [SerializeField] private MRTKInteractableSequenceInstance mrtkInteractableSequenceInstance;
+        [SerializeField] private ZoneStepSequenceInstance sequenceInstance;
         [SerializeField] private DeviceUWP leftDevice, rightDevice;
 
         private void Start()
         {
             // Bring menu up when user finishes task sequence
-            mrtkInteractableSequenceInstance.OnSequenceInstanceEnded?.AddListener(() => gameObject.SetActive(true));
+            sequenceInstance.OnSequenceInstanceEnded?.AddListener(() => gameObject.SetActive(true));
         }
         
         /// <summary>

@@ -1,5 +1,6 @@
 using SequenceLogic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UX
 {
@@ -8,13 +9,13 @@ namespace UX
     /// </summary>
     public class SkipMenu : MonoBehaviour
     {
-        [SerializeField] private MRTKInteractableSequenceInstance mrtkInteractableSequenceInstance;
+        [SerializeField] private ZoneStepSequenceInstance sequenceInstance;
 
         // Start is called before the first frame update
         void Start()
         {
             // Hide skip menu when a user finishes a task sequence
-            mrtkInteractableSequenceInstance.OnSequenceInstanceEnded?.AddListener(() => gameObject.SetActive(false));
+            sequenceInstance.OnSequenceInstanceEnded?.AddListener(() => gameObject.SetActive(false));
         }
     }
 }
